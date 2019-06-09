@@ -1,0 +1,216 @@
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+	<meta http-equiv='x-ua-compatible' content='ie=edge'> <title>Our Book Collection</title>
+	<!-- Font Awesome -->
+	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css'>
+	<!-- Bootstrap core CSS --> <link href='bootstrap.min.css' rel='stylesheet'>
+	<!-- Material Design Bootstrap --> <link href='mdb.min.css' rel='stylesheet'>
+	<!-- Normal Bootstrap -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<!-- My Own CSS --> <link href = "style.css" rel = "stylesheet">
+	<script src="bootstrap.min.js">	</script>
+	<script src="popper.min.js">	</script>
+	<script src="jquery-3.4.0.min.js"> </script>
+	<script src="mdb.min.js">	</script>
+
+	<!-- my own javascript --> <script src="external.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<style>
+		.test {
+    border: 0;
+	}
+	</style>
+	<script>
+		$(function(){
+			$('.prices').change(function(){
+				calc(this.id);
+			})
+
+			$('.delete').click(function() {
+				var current = parseFloat(document.getElementById('grandTotal').value);
+				var change = parseFloat(document.getElementById('priceT' + this.name).value);
+				document.getElementById('grandTotal').value = current - change;
+				var row = document.getElementById("row" + this.name);
+				row.parentNode.removeChild(row);
+
+				document.getElementById('length').value -= 1;
+			});
+
+			function calc( trigger ){
+				var num1 = document.getElementById(trigger).value;
+				var num2 = document.getElementById('price' + trigger).value;
+				document.getElementById('priceT' + trigger).value = num1 * num2;
+
+				var counter = 0;
+				var limit = parseInt(document.getElementById('length').value);
+				for (var i = 0; i < limit ; i++) {
+					var current = parseFloat(document.getElementById('priceT' + i).value);
+					counter += current;
+				}
+
+				document.getElementById('grandTotal').value = counter;
+				//document.getElementById('grandTotal2').value = counter;
+			}
+		})
+
+		//alerts the user that they have added another item to their cart
+		function userAlert() {
+			alert("An item has been added to the cart.");
+		}
+	</script>
+</head>
+<body>
+<!-- Main navigation -->
+<header>
+		<div class = "header" style = "height: 224px;">
+			<a class="navbar-brand" href="/purchase"><img src="books.png" style = "width: 150px; height: 150px; margin: 20px; display: inline; "></a>
+			<h1  class="card-title h1-responsive mb-5 rubik" style = "display: inline; padding-top: 48px;">Lending Library </h1>
+			<p class="mx-5 mb-5 karla" style = "display: inline;"> Revolutionizing modern book thrifting. Engaging readers. Cheap finds. Good reads. Recognizing different authors.</p>
+		</div>
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light fixed karla">
+			<div class="container">
+					<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+							<ul class="navbar-nav mr-auto smooth-scroll">
+									<li class="nav-item">
+											<a class="nav-link" href="/" data-offset="90">About</a>
+									</li>
+									<li class="nav-item">
+											<a class="nav-link" href="/purchase" data-offset="90">Purchase</a>
+									</li>
+									<li class="nav-item">
+											<a class="nav-link" href="/donate" data-offset="90">Donate</a>
+									</li>
+									<li class="nav-item">
+											<a class="nav-link" href="/contactus" data-offset="90">Contact Us</a>
+									</li>
+							</ul>
+	
+					</div>
+			</div>
+	</nav>
+	<!-- Navbar -->
+	</header>
+
+<!-- a form which the user can use to query books 
+<div id = "search-section"> 
+	<p class="mx-5 mb-5 karla"> Query for a book below: </p>
+	<form method = "POST" class="mx-5 mb-5 karla">
+		<input type="checkbox" name="femaleAuthor" value="true"> Female Author<br>
+		<input type="checkbox" name="coloredAuthor" value="true"> Minority Author<br>
+		<input type="checkbox" name="LGBTAuthor" value="true"> LGBTQIA+ Author<br>
+		<input type = "submit" value = "Submit" formaction = "/query">
+	</form>
+</div> 
+</div>
+-->
+
+<!-- the shopping cart modal -->
+<div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style = "width: 600px;">
+	<div>
+			<input type="hidden" value="<%= result3.length %>" id="length">
+			<form method="POST">
+				<table class="table" id="myTable">
+						<tbody>
+								<% for (var i = 0; i < result3.length; i++) { %>
+							<tr id="row<%= i %>">
+								<td> <img src= "<%= result3[i].imageLink %>" class="img-fluid" alt="zoom" style = "height: 205px; width: 150px"> </td>
+								<td>
+									<p> <input type="text" name="tableName" class="test" value="<%= result3[i].bookName %>" readonly>  </p>
+									<p> <input type="text" name="tableAuthor" class="test" value="<%= result3[i].author %>" readonly> </p>
+								</td>
+								<td>
+										<input class="prices" id="<%= i %>" type="number" value ="<%= result3[i].quantity %>" >
+										<input type="hidden" id="price<%= i %>" value=" <%= result3[i].price %> ">
+								</td>
+								<td >
+									<input type="text" id="priceT<%= i %>" name="tableAuthor" class="test" value="<%= result3[i].price %>" readonly>
+								</td>
+								<td>
+										<a class="delete" name="<%= i %>" href = "/deleteABook" > DELETE </a>
+								</td>
+							</tr>
+
+								<% } %>
+						</tbody>
+				</table>
+
+				<h1 > Total:
+						<% var total = 0.0;
+						for (var i = 0; i < result3.length; i++) {
+						total += parseFloat(result3[i].price);
+						}%>
+						<input type="text" id="grandTotal" name="totalPrice" class="test" value="<%= total %>" readonly> <span >
+				</span> </h1>
+
+				<button formaction="/pay" type="submit"> <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Check out with PayPal" style = "height: 70px; width: 200px;"/> </button>
+			</form>
+
+	</div>
+    </div>
+  </div>
+</div>
+
+<!-- check out button which  triggers the modal -->
+<div class = "text-center" style = "margin: 30px;">
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCart"> Proceed to Checkout | <%= result2 %> Items </button>
+</div>
+
+ <!-- the panels of books -->
+<div class = "bookPanel" style = "text-align: center;">
+<% for (var i = 0; i < result1.length; i++) { %>
+<div class="card">
+  <div class="card-body" style = "min-height: 656px; text-align: center;">
+	<div class="view overlay zoom">
+		<img src= "<%= result1[i].imageLink %>" class="img-fluid" alt="zoom" style = "height: 375px; width: 250px">
+	</div>
+	<h5 class="card-title"> <%= result1[i].bookName %> </h5>
+	<h6 class="card-subtitle mb-2 text-muted"> <%= result1[i].author %> </h6>
+	<p class="card-text"> <%= result1[i].summary%></p>
+	<div class="card-footer px-1">
+		<span class="float-left font-weight-bold">
+			<strong> <%= result1[i].price%></strong>
+		</span>
+		<span>
+			<!-- Star ratings -->
+			<div class="rating">
+				<span title="five stars">&#9734;</span>
+				<span title="four stars">&#9734;</span>
+				<span title="three stars">&#9734;</span>
+				<span title="two stars">&#9734;</span>
+				<span title="one star">&#9734;</span>
+			</div>
+		</span>
+		<span class= "float-right">
+			<form action="/clicked" method="POST">
+				<input type="hidden" name="quantity" value="1" >
+				<input type="hidden" name="bookName" value=" <%= result1[i].bookName %> ">
+				<input type="hidden" name="author" value=" <%= result1[i].author %> ">
+				<input type="hidden" name="price" value=" <%= result1[i].price %> ">
+				<input type="hidden" name="imageLink" value=" <%= result1[i].imageLink %>  ">
+
+				<button type="submit" onclick = "userAlert()">
+					<i class="fas fa-shopping-cart grey-text ml-3"></i>
+				</button>
+			</form>
+		</span>
+
+	</div>
+  </div>
+</div>
+<% } %>
+</div>
+
+
+</body>
+</html>

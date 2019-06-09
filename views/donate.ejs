@@ -1,0 +1,177 @@
+<html>
+<head>
+		<meta charset='utf-8'>
+		<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+		<meta http-equiv='x-ua-compatible' content='ie=edge'> <title>Our Book Collection</title>
+		<!-- Font Awesome -->
+		<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css'>
+		<!-- Bootstrap core CSS --> <link href='bootstrap.min.css' rel='stylesheet'>
+		<!-- Material Design Bootstrap --> <link href='mdb.min.css' rel='stylesheet'>
+		<!-- My Own CSS --> <link href = "style.css" rel = "stylesheet">
+	</head>
+	<body>
+	
+	
+	<!-- Main navigation -->
+	<header>
+		<div class = "header">
+			<a class="navbar-brand" href="/purchase"><img src="books.png" style = "width: 150px; height: 150px; margin: 20px; "></a>
+			<h1  class="card-title h1-responsive mb-5 rubik" style = "display: inline;">Lending Library </h1>
+			<p class="mx-5 mb-5 karla" style = "display: inline;"> Revolutionizing modern book thrifting. Engaging readers. Cheap finds. Good reads. Recognizing different authors.</p>
+		</div>
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light fixed karla">
+			<div class="container">
+					<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+							<ul class="navbar-nav mr-auto smooth-scroll">
+									<li class="nav-item">
+											<a class="nav-link" href="/" data-offset="90">About</a>
+									</li>
+									<li class="nav-item">
+											<a class="nav-link" href="/purchase" data-offset="90">Purchase</a>
+									</li>
+									<li class="nav-item">
+											<a class="nav-link" href="/donate" data-offset="90">Donate</a>
+									</li>
+									<li class="nav-item">
+											<a class="nav-link" href="/contactus" data-offset="90">Contact Us</a>
+									</li>
+							</ul>
+	
+					</div>
+			</div>
+	</nav>
+	<!-- Navbar -->
+	</header>
+<div class="container-fluid">
+<!-- form with book information -->
+<form class="text-center border border-light p-5" method = "POST" style = "text-align: left;">
+
+	<h2 class="h1-responsive font-weight-bold text-center mb-5 karla">Donate a Book Below!</h2>
+	<table style="width:50%">
+		<tr>
+			<th>Title:</th>
+			<td><input type="text"  id="title" name="title"></td> 
+		</tr>
+		<tr>
+			<th> Author:</th>
+			<td> <input type="text" id="author" name="author"></td> 
+		</tr>
+		<tr>
+			<th> Category: </th>
+			<td> 
+				<div class="form-group">
+					<p> </p>
+					<div class="radio">
+						<label><input type="radio" name="category" value="adult"> Adult </label>
+					</div>
+					<div class="radio">
+						<label><input type="radio" name="category" value="young adult"> Young Adult </label>
+					</div>
+					<div class="radio">
+						<label><input type="radio" name="category" value="kids"> Kids </label>
+					</div>
+				</div>
+			</td> 
+		</tr>
+		<tr>
+			<th> Link to the image of the book: </th>
+			<td> <input type="text" name="imageLink" id="imageLink"></td> 
+		</tr>
+		<tr>
+			<th> Is the author female? </th>
+			<td> 
+				<div class="form-group">
+					<div class="radio">
+						<label><input type="radio" name="femaleAuthor" value="true"> Yes </label>
+					</div>
+					<div class="radio">
+						<label><input type="radio" name="femaleAuthor" value="false"> No </label>
+					</div>
+				</div>
+			</td> 
+		</tr>
+		<tr>
+			<th> Is the author colored or part of a minority ethnic group? </th>
+			<td> 
+				<div class="form-group">
+					<div class="radio">
+						<label> <input type="radio" name="coloredAuthor" value="true"> Yes </label>
+					</div>
+					<div class="radio">
+						<label> <input type="radio" name="coloredAuthor" value="false"> No </label>
+					</div>
+				</div>
+			</td> 
+		</tr>
+		<tr>
+			<th> Is the author LGBTQIA+? </th>
+			<td> 
+				<div class="form-group">
+					<div class="radio">
+						<label> <input type="radio" name="LGBTAuthor" value="true"> Yes </label>
+					</div>
+					<div class="radio">
+						<label> <input type="radio" name="LGBTAuthor" value="false"> No </label>
+					</div>
+				</div>
+			</td> 
+		</tr>
+		<tr>
+			<th> Please write a summary for the book:   </th>
+			<td> <input type = "text" name = "summary" id="summary" style = "height: 200px; width: 300px;"> </td> 
+		</tr>
+		<tr>
+			<th> What is the condition of the book? (We will use this to determine the price of the book) </th>
+			<td> 
+				<div class="form-group">
+					<div class="radio">
+						<label><input type="radio" name="condition" value="Brand new"> Brand New </label>
+					</div>
+					<div class="radio">
+						<label> <input type="radio" name="condition" value="Like New"> Like New </label>
+					</div>
+					<div class="radio">
+						<label> <input type="radio" name="condition" value="Very Good"> Very Good </label>
+					</div>
+					<div class="radio">
+						<label> <input type="radio" name="condition" value="Good"> Good </label>
+					</div>
+					<div class="radio">
+						<label> <input type="radio" name="condition" value="Acceptable"> Acceptable </label>
+					</div>
+				</div>
+			</td> 
+		</tr>
+	</table>	 
+
+    <!-- Social register -->
+    <p> Please sign up with:</p>
+
+    <a type="button" class="light-blue-text mx-2">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a type="button" class="light-blue-text mx-2">
+        <i class="fab fa-twitter"></i>
+    </a>
+    <a type="button" class="light-blue-text mx-2">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a type="button" class="light-blue-text mx-2">
+        <i class="fab fa-github"></i>
+    </a>
+
+    <hr>
+
+    <!-- Terms of service -->
+    <p>By clicking
+        <em>Submit</em> you agree to our
+        <a href="" target="_blank">terms of service</a>
+	</p>
+
+	<input type = "submit" value = "Submit" formaction = "/donatebook">
+</form>
+</div>
+
+</body>
+</html>

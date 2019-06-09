@@ -1,0 +1,36 @@
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+	<meta http-equiv='x-ua-compatible' content='ie=edge'> <title>Our Book Collection</title>
+	<!-- Font Awesome -->
+	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css'>
+	<!-- Bootstrap core CSS --> <link href='bootstrap.min.css' rel='stylesheet'>
+	<!-- Material Design Bootstrap --> <link href='mdb.min.css' rel='stylesheet'>
+	<!-- My Own CSS --> <link href = "style.css" rel = "stylesheet">
+</head>
+<body>
+	<!-- the jumbotron which contains the title of the website -->
+	<div id="intro-section" style="background-color: #f06292; height:100%" class="view">
+	<div class="container-fluid" id = "titleJumbotron" >
+		<div class="text-white text-center py-5 px-4 my-5">
+			<div>
+				<h2 class="card-title h1-responsive pt-3 mb-5 rubik"> Success</h2>
+				<p class="mx-5 mb-5 karla"> Your purchase has been successfully made</p>
+			</div>
+		</div>
+		<button class="btn button b1"> <a href = "/purchase"> purchase <br> books</a> </button>
+		<button class="btn button b2"> 	<a href = "/donate"> donate <br> books </a> </button>
+	</div>
+	</div>
+
+  <h1> <%= first_name %> </h1>
+  <h1> <%= last_name %> </h1>
+  <h1> <%= amount %> </h1>
+  <p> <%= line1 %> </p>
+  <p> <%= city %> </p>
+  <p> <%= state %> </p>
+  <p> <%= postal_code %> </p>
+  <p> <%= country_code %> </p>
+</body>
+</html>
