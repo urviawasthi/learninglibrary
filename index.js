@@ -198,8 +198,8 @@ dbo.collection("cart").find({}).toArray(function(err4, result3) {
         "payment_method": "paypal"
     },
     "redirect_urls": {
-        "return_url": process.env.SUCCESS,
-        "cancel_url": process.env.CANCEL
+        "return_url": process.env.SUCCESSURL,
+        "cancel_url": process.env.CANCELURL
     },
     "transactions": [{
         "item_list": {
